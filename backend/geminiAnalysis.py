@@ -17,11 +17,11 @@ client = genai.Client(api_key=os.getenv("geminiapikey"))
 
 def getAnalysis(interval, url):
     print("Getting chat...")
-    chat = extractChat.getChat(url)
-    if (chat == -1):
+    try:
+        chat = extractChat.getChat(url)
+        streamInfo = str(getStreamerInfo.getInfo(url))
+    except:
         return -1
-
-    streamInfo = str(getStreamerInfo.getInfo(url))
 
     model, ratelim = settings.getModel()
     previousRatings = deque([])
@@ -63,7 +63,7 @@ def getAnalysis(interval, url):
                 "rating": cleaned,
                 "messages": messages
             }
-            previousRatings.append(cleaned)
+            previousRatings.append(curr)
             if (len(previousRatings) == 6):
                 previousRatings.popleft()
 

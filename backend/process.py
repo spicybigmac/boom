@@ -6,4 +6,3 @@ def process(url, interval):
     out = geminiAnalysis.getAnalysis(interval, url)
     print(f"Finished in {datetime.datetime.now()-start}.")
     return out
-

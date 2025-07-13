@@ -1,3 +1,7 @@
 fastapi
 uvicorn
 google-genai
+chat-downloader
+twitch-python
+pydantic
+sse-starlette

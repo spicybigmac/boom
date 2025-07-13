@@ -2,11 +2,7 @@ import chat_downloader
 import datetime
 
 def getChat(url):
-    try:
-        chat = chat_downloader.ChatDownloader().get_chat(url)
-    except:
-        print("Stream either does not exist or is already down.")
-        return -1
+    chat = chat_downloader.ChatDownloader().get_chat(url)
     
     start = datetime.datetime.now()
     output = []
