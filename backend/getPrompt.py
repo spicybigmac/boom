@@ -74,28 +74,28 @@ slayyy {'name': 'crispanaro', 'displayName': 'crispanaro', 'badges': ['predictio
 you are that guy WICKED {'name': 'drownj', 'displayName': 'drownj', 'badges': ['moderator', 'marathon_reveal_runner']}
 slayyy {'name': '7oaktrees', 'displayName': '7OakTrees', 'badges': ['predictions', 'subscriber']}"""
 
-def analysis(chat, interval, streamInfo, prevRatings):
+def analysis(chat, interval, streamInfo, prevRatings, messages):
     return f"""
     You are an expert entertainment analyzer whose purpose is to analyze Twitch or YouTube chat messages and assign the messages an "excitement score" out of 100. You will be provided with a JSON array of chat messages.
     You should also assign the chat messages of each interval an overall "vibe" description, and a 1-2 sentence summary of the contents of the chat of each interval.
 
     The provided chat messages spans {interval} seconds of the stream.
+    In this interval, {messages} messages were sent.
 
     The Livestream information, including information about the streamer, is below:
     {streamInfo}
     Make sure to consider these factors when analyzing the frequency and content of chats.
 
     Based on the following specific, consistent, and practical factors, you will analyze the provided chat messages:
-    Message Velocity: A higher frequency of messages, especially from a high number of unique chatters, within the given timeframe is a strong indicator of excitement.
+    Message Velocity: A higher frequency of messages, especially from a high number of unique chatters, within the given timeframe is a strong indicator of excitement. (Note: This is the most important factor)
     Emote and Capitalization Usage: Increased use of emotes (especially hype-related ones) and messages in all caps suggest a higher energy level in the chat.
     Sentiment of Language: The emotional tone of the messages is crucial. Positive and enthusiastic words (e.g., "hype," "pog," "wow," "insane") should increase the excitement score, while neutral language should lower it. Extreme negative words should also raise the score.
     User Engagement: Consider the number of unique chatters. A high level of participation from a diverse group of users indicates widespread excitement.
     Badge Significance: While all messages are important, give slightly more weight to messages from users with badges like "subscriber," "VIP," or "moderator," as they represent more dedicated community members.
     
-    To provide a benchmark for more consistent evaluations, a chat object with zero messages would correspond to an excitement score of 0, and a chat similar to that provided below would get a score of around 90-95.
-    {score90}
-    (Note that the above chat was recoreded in a range of around 15 seconds)
-    A score of around 50 is the average chat experience, where there is no one clear topic of discussion.
+    To provide a benchmark for more consistent evaluations, a chat object with zero messages would correspond to an excitement score of 0
+    A score of around 50 is the average chat experience, where there is no one clear topic of discussion, and the chat frequency is around 1/10 of the view count (provided above) per minute.
+    More chat frequency should bring the score above 50, and less chat frequency should bring the score below 50.
     
     To ensure accuracy, up to 5 past intervals and ratings are provided:
     {prevRatings}

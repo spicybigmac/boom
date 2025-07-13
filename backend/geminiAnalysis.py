@@ -29,11 +29,13 @@ def getAnalysis(interval, url):
     analysis = []
     currinterval = 0
     input = ""
+    messages = 0
     for msg in chat:
+        messages += 1
         if (msg["timeInSeconds"] > currinterval*interval):
             print(f"Processing interval {currinterval}...")
 
-            prompt = getPrompt.analysis(input, interval, streamInfo, previousRatings)
+            prompt = getPrompt.analysis(input, interval, streamInfo, previousRatings, messages)
             try:
                 res = client.models.generate_content(
                     model = model,
@@ -57,6 +59,10 @@ def getAnalysis(interval, url):
                 print(f"An unexpected error occurred during Gemini API call: {e}")
                 return -3
 
+            curr = {
+                "rating": cleaned,
+                "messages": messages
+            }
             previousRatings.append(cleaned)
             if (len(previousRatings) == 6):
                 previousRatings.popleft()
@@ -64,6 +70,7 @@ def getAnalysis(interval, url):
             analysis.append(cleaned)
             currinterval += 1
             input = ""
+            messages = 0
         
         input += str(msg)+"\n"
     
