@@ -63,7 +63,7 @@ function HomePage({ onProcessLink, error, interval, onIntervalChange }) {
             </div>
 
             <section className="explanation-section gradient-box">
-                <h2>How It Works</h2>
+                <h2>Streaming Simplified.</h2>
                 <p>
                     <strong>Boom!</strong> uses AI to watch a Twitch VOD for you. It analyzes the chat's excitement and conversation to pinpoint peak moments, and tell you what engages your audience.
                 </p>

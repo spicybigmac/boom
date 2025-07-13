@@ -108,6 +108,6 @@ def analysis(chat, interval, streamInfo, prevRatings, messages):
     {chat}
 
     Evaluate the above file based on the JSON schema provided below:
-    Your response MUST be a single, valid JSON object that strictly adheres to the following schema. Do not include any text or formatting outside of this JSON object.
+    **Your response MUST be a single, valid JSON object that strictly adheres to the following schema. Do not include any text or formatting outside of this JSON object.**
     {outputjsonformat}
     """

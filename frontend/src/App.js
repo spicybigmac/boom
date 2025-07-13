@@ -54,7 +54,7 @@ function App() {
             case 'loading':
                 return <LoadingPage />;
             case 'results':
-                return <ResultsPage data={resultsData} onGoBack={handleGoBack} />;
+                return <ResultsPage data={resultsData} onGoBack={handleGoBack} interval={interval} />;
             case 'home':
             default:
                 return <HomePage onProcessLink={processVodLink} error={error} interval={interval} onIntervalChange={setInterval} />;

@@ -18,7 +18,7 @@ ChartJS.register(
   CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler
 );
 
-function ResultsPage({ data, onGoBack }) {
+function ResultsPage({ data, onGoBack, interval }) {
     const [displayScore, setDisplayScore] = useState(0);
 
     const { averageScore, chartData, chartOptions, analysisArray } = useMemo(() => {
@@ -145,7 +145,7 @@ function ResultsPage({ data, onGoBack }) {
                         <tbody>
                             {analysisArray.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{formatTime(index, item.intervalLength ?? item.interval_length)}</td>
+                                    <td>{formatTime(index, interval)}</td>
                                     <td>{item.excitementScore ?? item.excitement_score ?? 0}</td>
                                     <td>{item.vibe}</td>
                                     <td>{item.summary}</td>
