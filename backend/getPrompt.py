@@ -93,7 +93,6 @@ def analysis(chat, interval, streamInfo, prevRatings, messages):
     User Engagement: Consider the number of unique chatters. A high level of participation from a diverse group of users indicates widespread excitement.
     Badge Significance: While all messages are important, give slightly more weight to messages from users with badges like "subscriber," "VIP," or "moderator," as they represent more dedicated community members.
     
-    To provide a benchmark for more consistent evaluations, a chat object with zero messages would correspond to an excitement score of 0
     A score of around 50 is the average chat experience, where there is no one clear topic of discussion, and the chat frequency is around 1/10 of the view count (provided above) per minute.
     More chat frequency should bring the score above 50, and less chat frequency should bring the score below 50.
     
